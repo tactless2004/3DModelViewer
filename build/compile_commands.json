@@ -22,5 +22,11 @@
   "command": "/usr/bin/g++   -g -o CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o -c /home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.cpp",
   "file": "/home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.cpp",
   "output": "CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o"
+},
+{
+  "directory": "/home/leytonm/Dev/C/OBJViewerProject/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/obj_viewer.dir/src/model_renderer.cpp.o -c /home/leytonm/Dev/C/OBJViewerProject/src/model_renderer.cpp",
+  "file": "/home/leytonm/Dev/C/OBJViewerProject/src/model_renderer.cpp",
+  "output": "CMakeFiles/obj_viewer.dir/src/model_renderer.cpp.o"
 }
 ]

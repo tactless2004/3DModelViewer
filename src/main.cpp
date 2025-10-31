@@ -13,6 +13,7 @@
 // Local imports
 #include "ObjParser.hpp"
 #include "gl_utils.hpp"
+#include "model_renderer.hpp"
 
 float angleX = 0.0f;
 float angleY = 0.0f;
@@ -22,20 +23,12 @@ float zoom = 1.0f;
 glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
 glm::vec3 cameraPos = glm::vec3(0, 0, 5);
 
-// MVP matrix components
-glm::mat4 projection;
-glm::mat4 model;
-glm::mat4 view;
-glm::mat4 mvp;
-
 // Define functions, even though modern c++ should be able to look ahead compile
 void pollInput(GLFWwindow* window);
-void computeMVP();
 
 int main () {
-
     ObjParser parser;
-    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/pumpkin.obj");
+    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/teapot.obj");
     parser.normalize();
     std::vector<GLfloat> vertbuf = parser.flatten();
 
@@ -54,12 +47,15 @@ int main () {
         return -1;
     }
 
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    GLuint programID = LoadShaders(
+	// Compile model shaders
+	GLuint programID = LoadShaders(
         "/home/leytonm/Dev/C/OBJViewerProject/shaders/vertshader.glsl",
         "/home/leytonm/Dev/C/OBJViewerProject/shaders/fragshader.glsl"
     );
-    glUseProgram(programID);
+	
+	ModelRenderer model1 = ModelRenderer(programID, vertbuf, glm::vec3(0.0f, 0.0f, 0.0f));
+
+	// Setup: VBOs and VAOs
     GLuint vao, vbo;
     // Generate vao
     glGenVertexArrays(1, &vao);
@@ -72,8 +68,8 @@ int main () {
     // Load data into vbo
     glBufferData(
         GL_ARRAY_BUFFER,
-        vertbuf.size() * sizeof(GLfloat),
-        vertbuf.data(),
+        model1.vertices.size() * sizeof(GLfloat),
+        model1.vertices.data(),
         GL_STATIC_DRAW
     );
 
@@ -88,9 +84,17 @@ int main () {
         pollInput(window);
 
 		// actuate inputs
-		computeMVP();
+		model1.reset_model();
+		model1.translate_model(position);
+		model1.rotate_model(angleX, glm::vec3(1, 0, 0));
+		model1.rotate_model(angleY, glm::vec3(0, 1, 0));
+		model1.translate_model(position);
+		model1.scale_model(zoom);
+		
+		// use model renderingProgram
+		glUseProgram(model1.renderingProgram);
 
-		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(mvp));
+		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(model1.get_mvp()));
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -105,7 +109,7 @@ int main () {
             0,
             (void*)0
         );
-        glDrawArrays(GL_TRIANGLES, 0, vertbuf.size() / 3);
+        glDrawArrays(GL_TRIANGLES, 0, model1.vertices.size() / 3);
         glDisableVertexAttribArray(0);
 
         glfwSwapBuffers(window);
@@ -117,39 +121,14 @@ int main () {
 
 void pollInput(GLFWwindow* window) {
 	// TODO: research how other tools do this, not happy with the current state of the movements
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position.y -= 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.y += 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position.x += 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) position.x -= 0.05f;
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position.y += 0.05f;
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.y -= 0.05f;
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position.x -= 0.05f;
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) position.x += 0.05f;
 
-    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) angleY -= 2.0f;
-    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) angleY += 2.0f;
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) angleX -= 2.0f;
+    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) angleX += 2.0f;
 
     if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) zoom *= 1.05f;
     if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) zoom /= 1.05f;
-}
-
-void computeMVP() {
-	// Change model matrix based on user inputs
-	model = glm::mat4(1.0f);
-	model = glm::translate(model, position);
-	model = glm::rotate(model, glm::radians(angleX), glm::vec3(1, 0, 0));
-	model = glm::rotate(model, glm::radians(angleY), glm::vec3(0, 1, 0));
-	model = glm::scale(model, glm::vec3(zoom));
-
-	// generate view matrix
-	view = glm::lookAt(
-		cameraPos, // camera vec
-		glm::vec3(0, 0, 0), // center vec
-		glm::vec3(0, 1, 0) // up vec
-	);
-
-	projection = glm::perspective(
-		glm::radians(45.0f), 
-		640.0f / 480.0f, // aspect ratio
-		0.1f,
-		100.0f
-	);
-
-	mvp = projection * view * model;
 }

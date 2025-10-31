@@ -395,4 +395,5 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: \
  /usr/include/c++/13/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/local/include/glm/gtc/type_ptr.inl \
  /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.hpp \
- /home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.hpp
+ /home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.hpp \
+ /home/leytonm/Dev/C/OBJViewerProject/src/model_renderer.hpp

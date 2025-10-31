@@ -225,6 +225,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/model_renderer.o: src/model_renderer.cpp.o
+.PHONY : src/model_renderer.o
+
+# target to build an object file
+src/model_renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/model_renderer.cpp.o
+.PHONY : src/model_renderer.cpp.o
+
+src/model_renderer.i: src/model_renderer.cpp.i
+.PHONY : src/model_renderer.i
+
+# target to preprocess a source file
+src/model_renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/model_renderer.cpp.i
+.PHONY : src/model_renderer.cpp.i
+
+src/model_renderer.s: src/model_renderer.cpp.s
+.PHONY : src/model_renderer.s
+
+# target to generate assembly for a file
+src/model_renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/model_renderer.cpp.s
+.PHONY : src/model_renderer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,6 +270,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/model_renderer.o"
+	@echo "... src/model_renderer.i"
+	@echo "... src/model_renderer.s"
 .PHONY : help
 
 

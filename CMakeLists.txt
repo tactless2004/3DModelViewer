@@ -12,6 +12,8 @@ add_executable(obj_viewer
     src/ObjParser.cpp
     src/gl_utils.hpp
     src/gl_utils.cpp
+    src/model_renderer.hpp
+    src/model_renderer.cpp
 )
 
 target_link_libraries(obj_viewer

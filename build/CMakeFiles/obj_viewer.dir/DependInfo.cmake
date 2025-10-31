@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp" "CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o" "gcc" "CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o.d"
   "/home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.cpp" "CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o" "gcc" "CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o.d"
   "/home/leytonm/Dev/C/OBJViewerProject/src/main.cpp" "CMakeFiles/obj_viewer.dir/src/main.cpp.o" "gcc" "CMakeFiles/obj_viewer.dir/src/main.cpp.o.d"
+  "/home/leytonm/Dev/C/OBJViewerProject/src/model_renderer.cpp" "CMakeFiles/obj_viewer.dir/src/model_renderer.cpp.o" "gcc" "CMakeFiles/obj_viewer.dir/src/model_renderer.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
