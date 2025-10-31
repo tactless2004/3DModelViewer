@@ -129,6 +129,30 @@ obj_viewer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/build
 .PHONY : obj_viewer/fast
 
+src/ObjParser.o: src/ObjParser.cpp.o
+.PHONY : src/ObjParser.o
+
+# target to build an object file
+src/ObjParser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o
+.PHONY : src/ObjParser.cpp.o
+
+src/ObjParser.i: src/ObjParser.cpp.i
+.PHONY : src/ObjParser.i
+
+# target to preprocess a source file
+src/ObjParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.i
+.PHONY : src/ObjParser.cpp.i
+
+src/ObjParser.s: src/ObjParser.cpp.s
+.PHONY : src/ObjParser.s
+
+# target to generate assembly for a file
+src/ObjParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.s
+.PHONY : src/ObjParser.cpp.s
+
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... obj_viewer"
+	@echo "... src/ObjParser.o"
+	@echo "... src/ObjParser.i"
+	@echo "... src/ObjParser.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"

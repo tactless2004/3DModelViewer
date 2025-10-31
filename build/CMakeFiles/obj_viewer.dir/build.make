@@ -73,45 +73,61 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: CMakeFiles/obj_viewer.dir/flags.make
 CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/src/main.cpp
 CMakeFiles/obj_viewer.dir/src/main.cpp.o: CMakeFiles/obj_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leytonm/Dev/C/OBJViewerProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/obj_viewer.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/obj_viewer.dir/src/main.cpp.o -MF CMakeFiles/obj_viewer.dir/src/main.cpp.o.d -o CMakeFiles/obj_viewer.dir/src/main.cpp.o -c /home/leytonm/Dev/C/OBJViewerProject/src/main.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/obj_viewer.dir/src/main.cpp.o -MF CMakeFiles/obj_viewer.dir/src/main.cpp.o.d -o CMakeFiles/obj_viewer.dir/src/main.cpp.o -c /home/leytonm/Dev/C/OBJViewerProject/src/main.cpp
 
 CMakeFiles/obj_viewer.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/obj_viewer.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leytonm/Dev/C/OBJViewerProject/src/main.cpp > CMakeFiles/obj_viewer.dir/src/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leytonm/Dev/C/OBJViewerProject/src/main.cpp > CMakeFiles/obj_viewer.dir/src/main.cpp.i
 
 CMakeFiles/obj_viewer.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/obj_viewer.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leytonm/Dev/C/OBJViewerProject/src/main.cpp -o CMakeFiles/obj_viewer.dir/src/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leytonm/Dev/C/OBJViewerProject/src/main.cpp -o CMakeFiles/obj_viewer.dir/src/main.cpp.s
 
 CMakeFiles/obj_viewer.dir/src/glad.c.o: CMakeFiles/obj_viewer.dir/flags.make
 CMakeFiles/obj_viewer.dir/src/glad.c.o: /home/leytonm/Dev/C/OBJViewerProject/src/glad.c
 CMakeFiles/obj_viewer.dir/src/glad.c.o: CMakeFiles/obj_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leytonm/Dev/C/OBJViewerProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/obj_viewer.dir/src/glad.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/obj_viewer.dir/src/glad.c.o -MF CMakeFiles/obj_viewer.dir/src/glad.c.o.d -o CMakeFiles/obj_viewer.dir/src/glad.c.o -c /home/leytonm/Dev/C/OBJViewerProject/src/glad.c
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/obj_viewer.dir/src/glad.c.o -MF CMakeFiles/obj_viewer.dir/src/glad.c.o.d -o CMakeFiles/obj_viewer.dir/src/glad.c.o -c /home/leytonm/Dev/C/OBJViewerProject/src/glad.c
 
 CMakeFiles/obj_viewer.dir/src/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/obj_viewer.dir/src/glad.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/leytonm/Dev/C/OBJViewerProject/src/glad.c > CMakeFiles/obj_viewer.dir/src/glad.c.i
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/leytonm/Dev/C/OBJViewerProject/src/glad.c > CMakeFiles/obj_viewer.dir/src/glad.c.i
 
 CMakeFiles/obj_viewer.dir/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/obj_viewer.dir/src/glad.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/leytonm/Dev/C/OBJViewerProject/src/glad.c -o CMakeFiles/obj_viewer.dir/src/glad.c.s
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/leytonm/Dev/C/OBJViewerProject/src/glad.c -o CMakeFiles/obj_viewer.dir/src/glad.c.s
+
+CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o: CMakeFiles/obj_viewer.dir/flags.make
+CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp
+CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o: CMakeFiles/obj_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/leytonm/Dev/C/OBJViewerProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o -MF CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o.d -o CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o -c /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp
+
+CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp > CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.i
+
+CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp -o CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.s
 
 # Object files for target obj_viewer
 obj_viewer_OBJECTS = \
 "CMakeFiles/obj_viewer.dir/src/main.cpp.o" \
-"CMakeFiles/obj_viewer.dir/src/glad.c.o"
+"CMakeFiles/obj_viewer.dir/src/glad.c.o" \
+"CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o"
 
 # External object files for target obj_viewer
 obj_viewer_EXTERNAL_OBJECTS =
 
 obj_viewer: CMakeFiles/obj_viewer.dir/src/main.cpp.o
 obj_viewer: CMakeFiles/obj_viewer.dir/src/glad.c.o
+obj_viewer: CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o
 obj_viewer: CMakeFiles/obj_viewer.dir/build.make
 obj_viewer: /usr/lib/x86_64-linux-gnu/libGLX.so
 obj_viewer: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 obj_viewer: CMakeFiles/obj_viewer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/leytonm/Dev/C/OBJViewerProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable obj_viewer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/leytonm/Dev/C/OBJViewerProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable obj_viewer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/obj_viewer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

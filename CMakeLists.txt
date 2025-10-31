@@ -8,6 +8,8 @@ add_executable(obj_viewer
     src/main.cpp
     src/glad.h
     src/glad.c
+    src/ObjParser.hpp
+    src/ObjParser.cpp
 )
 
 target_link_libraries(obj_viewer

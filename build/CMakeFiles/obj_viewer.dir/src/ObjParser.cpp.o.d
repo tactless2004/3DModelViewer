@@ -1,5 +1,5 @@
-CMakeFiles/obj_viewer.dir/src/main.cpp.o: \
- /home/leytonm/Dev/C/OBJViewerProject/src/main.cpp \
+CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o: \
+ /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -154,16 +154,15 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/sstream \
- /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/vector \
- /usr/include/c++/13/bits/stl_uninitialized.h \
- /usr/include/c++/13/bits/stl_vector.h \
- /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc \
- /home/leytonm/Dev/C/OBJViewerProject/src/glad.h \
- /usr/include/KHR/khrplatform.h \
+ /usr/include/c++/13/bits/sstream.tcc \
+ /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.hpp \
+ /usr/include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.hpp \
- /usr/include/GLFW/glfw3.h /usr/include/c++/13/array \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h /usr/include/GL/gl.h \
+ /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
+ /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_vector.h \
+ /usr/include/c++/13/bits/stl_bvector.h \
+ /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/array \
  /usr/include/c++/13/compare
