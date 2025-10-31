@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <glm/glm.hpp>
 #include "ObjParser.hpp"
 
 
@@ -43,6 +44,23 @@ void ObjParser::parseFile(std::string f) {
     }
 
     inputFile.close();
+}
+
+float v_mag_f(Vertex& vertex) {
+    return (float) glm::sqrt(
+        glm::pow(vertex.x, 2) +
+        glm::pow(vertex.y, 2) +
+        glm::pow(vertex.z, 2)
+    );
+}
+
+void ObjParser::normalize() {
+    for (auto& vertex : vertdat) {
+        float mag = v_mag_f(vertex);
+        vertex.x *= (1/mag);
+        vertex.y *= (1/mag);
+        vertex.z *= (1/mag);
+    }
 }
 
 std::vector<GLfloat> ObjParser::flatten() const {

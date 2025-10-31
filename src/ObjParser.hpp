@@ -18,5 +18,6 @@ public:
     std::vector<Face> facedat;
 
     void parseFile(std::string f);
+    void normalize();
     std::vector<GLfloat> flatten() const;
 };

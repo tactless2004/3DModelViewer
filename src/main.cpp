@@ -11,6 +11,7 @@ int main () {
 
     ObjParser parser;
     parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/pumpkin.obj");
+    parser.normalize();
     std::vector<GLfloat> vertbuf = parser.flatten();
 
     GLfloat tri[] = {
