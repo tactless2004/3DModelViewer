@@ -12,10 +12,21 @@
 float angleX = 0.0f;
 float angleY = 0.0f;
 float zoom = 1.0f;
-glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
 
+// Model position
+glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
+glm::vec3 cameraPos = glm::vec3(0, 0, 5);
+
+// MVP matrix components
+glm::mat4 projection;
+glm::mat4 model;
+glm::mat4 view;
+glm::mat4 mvp;
+
+// Define functions, even though modern c++ should be able to look ahead compile
 GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path);
 void pollInput(GLFWwindow* window);
+void computeMVP();
 
 int main () {
 
@@ -61,7 +72,9 @@ int main () {
         vertbuf.data(),
         GL_STATIC_DRAW
     );
-    
+
+    glEnable(GL_DEPTH_TEST);  
+
 	// Get MVP location
 	GLint mvpLoc = glGetUniformLocation(programID, "mvp");
 
@@ -70,28 +83,8 @@ int main () {
 		// poll events to move 3D objects
         pollInput(window);
 
-		// Change model matrix based on user inputs
-		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::translate(model, position);
-		model = glm::rotate(model, glm::radians(angleX), glm::vec3(1, 0, 0));
-		model = glm::rotate(model, glm::radians(angleY), glm::vec3(0, 1, 0));
-		model = glm::scale(model, glm::vec3(zoom));
-
-		// generate view matrix
-		glm::mat4 view = glm::lookAt(
-			glm::vec3(0, 0, 5), // camera vec
-			glm::vec3(0, 0, 0), // center vec
-			glm::vec3(0, 1, 0) // up vec
-		);
-
-		glm::mat4 projection = glm::perspective(
-			glm::radians(45.0f), 
-			640.0f / 480.0f, // aspect ratio
-			0.1f,
-			100.0f
-		);
-
-		glm::mat4 mvp = projection * view * model;
+		// actuate inputs
+		computeMVP();
 
 		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(mvp));
 
@@ -119,6 +112,7 @@ int main () {
 }
 
 void pollInput(GLFWwindow* window) {
+	// TODO: research how other tools do this, not happy with the current state of the movements
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position.y -= 0.05f;
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.y += 0.05f;
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position.x += 0.05f;
@@ -129,6 +123,31 @@ void pollInput(GLFWwindow* window) {
 
     if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) zoom *= 1.05f;
     if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) zoom /= 1.05f;
+}
+
+void computeMVP() {
+	// Change model matrix based on user inputs
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, position);
+	model = glm::rotate(model, glm::radians(angleX), glm::vec3(1, 0, 0));
+	model = glm::rotate(model, glm::radians(angleY), glm::vec3(0, 1, 0));
+	model = glm::scale(model, glm::vec3(zoom));
+
+	// generate view matrix
+	view = glm::lookAt(
+		cameraPos, // camera vec
+		glm::vec3(0, 0, 0), // center vec
+		glm::vec3(0, 1, 0) // up vec
+	);
+
+	projection = glm::perspective(
+		glm::radians(45.0f), 
+		640.0f / 480.0f, // aspect ratio
+		0.1f,
+		100.0f
+	);
+
+	mvp = projection * view * model;
 }
 // LoadShaders code from:
 // https://www.opengl-tutorial.org/beginners-tutorials/tutorial-2-the-first-triangle/
