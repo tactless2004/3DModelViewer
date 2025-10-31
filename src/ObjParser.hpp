@@ -1,11 +1,12 @@
 #pragma once
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 #include <iostream>
 #include <vector>
 #include <array>
 
 struct Vertex {
-    float x,y,z;
+    glm::vec3 pos;
 };
 
 struct Face {

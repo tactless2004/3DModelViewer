@@ -29,7 +29,11 @@ void ObjParser::parseFile(std::string f) {
         // TODO: make this a switch statement
         if(prefix == "v") {
             if(vertstream >> x >> y >> z) {
-                vertdat.push_back({x, y, z});
+                vertdat.push_back(
+                    { //begin Vertex Struct
+                        glm::vec3(x, y, z) // Vertex.pos (glm::vec3)
+                    } //end Vertex Struct
+                );
             }
         } else if(prefix == "f") {
             if(vertstream >> v1 >> v2 >> v3) {
@@ -49,24 +53,27 @@ void ObjParser::parseFile(std::string f) {
 
 float v_mag_f(const Vertex& vertex) {
     return (float) glm::sqrt(
-        vertex.x * vertex.x +
-        vertex.y * vertex.y +
-        vertex.z * vertex.z
+        vertex.pos.x * vertex.pos.x +
+        vertex.pos.y * vertex.pos.y +
+        vertex.pos.z * vertex.pos.z
     );
 }
 
 void ObjParser::normalize() {
     float max_dim = 0.0f;
+
+    // First pass find the maximum dimension size
     for (auto& vertex : vertdat) {
-        max_dim = std::max({max_dim, vertex.x, vertex.y, vertex.z});
+        max_dim = std::max({max_dim, vertex.pos.x, vertex.pos.y, vertex.pos.z});
     }
 
     float inv_max_dim = 1.0f / max_dim ? max_dim != 0 : 1.0f;
 
+    // Second pass inversely scale all dimenisons such that maximum dimension size = 1
     for (auto& vertex : vertdat) {
-        vertex.x *= inv_max_dim;
-        vertex.y *= inv_max_dim;
-        vertex.z *= inv_max_dim;
+        vertex.pos.x *= inv_max_dim;
+        vertex.pos.y *= inv_max_dim;
+        vertex.pos.z *= inv_max_dim;
     }
 }
 
@@ -83,9 +90,9 @@ std::vector<GLfloat> ObjParser::flatten() const {
         flat.insert(
             flat.end(),
             {
-                v1.x, v1.y, v1.z,
-                v2.x, v2.y, v2.z,
-                v3.x, v3.y, v3.z
+                v1.pos.x, v1.pos.y, v1.pos.z,
+                v2.pos.x, v2.pos.y, v2.pos.z,
+                v3.pos.x, v3.pos.y, v3.pos.z
             }
         );
     }
