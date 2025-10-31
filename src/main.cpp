@@ -2,23 +2,27 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "glad.h"
 #include "ObjParser.hpp"
 #include <GLFW/glfw3.h>
 
+float angleX = 0.0f;
+float angleY = 0.0f;
+float zoom = 1.0f;
+glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
+
 GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path);
+void pollInput(GLFWwindow* window);
+
 int main () {
 
     ObjParser parser;
-    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/pumpkin.obj");
+    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/teapot.obj");
     parser.normalize();
     std::vector<GLfloat> vertbuf = parser.flatten();
-
-    GLfloat tri[] = {
-    -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
-    };
 
     GLFWwindow* window;
 
@@ -26,7 +30,7 @@ int main () {
         return -1;
     }
 
-    window = glfwCreateWindow(640, 480, "Hello Window!", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "OBJ Viewer", NULL, NULL);
     glfwMakeContextCurrent(window);
 
     if(!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
@@ -57,11 +61,40 @@ int main () {
         vertbuf.data(),
         GL_STATIC_DRAW
     );
-    std::cout << parser.facedat.size() << std::endl;
+    
+	// Get MVP location
+	GLint mvpLoc = glGetUniformLocation(programID, "mvp");
 
     while(!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-        
+		// poll events to move 3D objects
+        pollInput(window);
+
+		// Change model matrix based on user inputs
+		glm::mat4 model = glm::mat4(1.0f);
+		model = glm::translate(model, position);
+		model = glm::rotate(model, glm::radians(angleX), glm::vec3(1, 0, 0));
+		model = glm::rotate(model, glm::radians(angleY), glm::vec3(0, 1, 0));
+		model = glm::scale(model, glm::vec3(zoom));
+
+		// generate view matrix
+		glm::mat4 view = glm::lookAt(
+			glm::vec3(0, 0, 5), // camera vec
+			glm::vec3(0, 0, 0), // center vec
+			glm::vec3(0, 1, 0) // up vec
+		);
+
+		glm::mat4 projection = glm::perspective(
+			glm::radians(45.0f), 
+			640.0f / 480.0f, // aspect ratio
+			0.1f,
+			100.0f
+		);
+
+		glm::mat4 mvp = projection * view * model;
+
+		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(mvp));
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // Draw the OBJ file :)
@@ -85,6 +118,18 @@ int main () {
     return 0;
 }
 
+void pollInput(GLFWwindow* window) {
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position.y -= 0.05f;
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.y += 0.05f;
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) angleX += 2.0f;
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) angleX -= 2.0f;
+
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) angleY -= 2.0f;
+    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) angleY += 2.0f;
+
+    if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) zoom *= 1.05f;
+    if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) zoom /= 1.05f;
+}
 // LoadShaders code from:
 // https://www.opengl-tutorial.org/beginners-tutorials/tutorial-2-the-first-triangle/
 GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path){

@@ -28,7 +28,7 @@ void ObjParser::parseFile(std::string f) {
         // TODO: make this a switch statement
         if(prefix == "v") {
             if(vertstream >> x >> y >> z) {
-                vertdat.push_back({x * 0.3f, y * 0.3f, z * 0.3f});
+                vertdat.push_back({x, y, z});
             }
         } else if(prefix == "f") {
             if(vertstream >> v1 >> v2 >> v3) {
@@ -46,20 +46,22 @@ void ObjParser::parseFile(std::string f) {
     inputFile.close();
 }
 
-float v_mag_f(Vertex& vertex) {
+float v_mag_f(const Vertex& vertex) {
     return (float) glm::sqrt(
-        glm::pow(vertex.x, 2) +
-        glm::pow(vertex.y, 2) +
-        glm::pow(vertex.z, 2)
+        vertex.x * vertex.x +
+        vertex.y * vertex.y +
+        vertex.z * vertex.z
     );
 }
 
 void ObjParser::normalize() {
     for (auto& vertex : vertdat) {
-        float mag = v_mag_f(vertex);
-        vertex.x *= (1/mag);
-        vertex.y *= (1/mag);
-        vertex.z *= (1/mag);
+        //std::cout << "normalizing " << vertex.x << " " << vertex.y << " " << vertex.z << "!" << std::endl;
+        float inv_mag = 1.0f / v_mag_f(vertex);
+        vertex.x *= inv_mag;
+        vertex.y *= inv_mag;
+        vertex.z *= inv_mag;
+        //std::cout << "normalized " << vertex.x << " " << vertex.y << " " << vertex.z << "!" << std::endl;
     }
 }
 
