@@ -1,3 +1,0 @@
-/home/leytonm/Dev/C/OBJViewerProject/build/CMakeFiles/obj_viewer.dir
-/home/leytonm/Dev/C/OBJViewerProject/build/CMakeFiles/edit_cache.dir
-/home/leytonm/Dev/C/OBJViewerProject/build/CMakeFiles/rebuild_cache.dir
