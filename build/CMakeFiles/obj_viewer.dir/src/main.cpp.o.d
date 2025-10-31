@@ -158,7 +158,13 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: \
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc /usr/local/include/glm/glm.hpp \
+ /usr/include/c++/13/bits/vector.tcc \
+ /home/leytonm/Dev/C/OBJViewerProject/src/glad.h \
+ /usr/include/KHR/khrplatform.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /usr/include/GLFW/glfw3.h /usr/local/include/glm/glm.hpp \
  /usr/local/include/glm/detail/_fixes.hpp /usr/include/c++/13/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -184,11 +190,7 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: \
  /usr/include/c++/13/tr1/riemann_zeta.tcc \
  /usr/local/include/glm/detail/setup.hpp /usr/include/c++/13/cassert \
  /usr/include/assert.h /usr/local/include/glm/simd/platform.h \
- /usr/include/c++/13/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /usr/include/c++/13/climits \
+ /usr/include/c++/13/cstdint /usr/include/c++/13/climits \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -392,7 +394,5 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: \
  /usr/local/include/glm/ext/vector_uint1_sized.hpp \
  /usr/include/c++/13/cstring /usr/include/string.h /usr/include/strings.h \
  /usr/local/include/glm/gtc/type_ptr.inl \
- /home/leytonm/Dev/C/OBJViewerProject/src/glad.h \
- /usr/include/KHR/khrplatform.h \
  /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.hpp \
- /usr/include/GLFW/glfw3.h
+ /home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.hpp

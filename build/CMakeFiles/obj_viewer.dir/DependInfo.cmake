@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/leytonm/Dev/C/OBJViewerProject/src/glad.c" "CMakeFiles/obj_viewer.dir/src/glad.c.o" "gcc" "CMakeFiles/obj_viewer.dir/src/glad.c.o.d"
   "/home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp" "CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o" "gcc" "CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o.d"
+  "/home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.cpp" "CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o" "gcc" "CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o.d"
   "/home/leytonm/Dev/C/OBJViewerProject/src/main.cpp" "CMakeFiles/obj_viewer.dir/src/main.cpp.o" "gcc" "CMakeFiles/obj_viewer.dir/src/main.cpp.o.d"
   )
 

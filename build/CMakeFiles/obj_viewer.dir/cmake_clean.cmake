@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o"
   "CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o.d"
+  "CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o"
+  "CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o.d"
   "CMakeFiles/obj_viewer.dir/src/glad.c.o"
   "CMakeFiles/obj_viewer.dir/src/glad.c.o.d"
   "CMakeFiles/obj_viewer.dir/src/main.cpp.o"

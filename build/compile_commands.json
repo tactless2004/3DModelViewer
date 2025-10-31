@@ -16,5 +16,11 @@
   "command": "/usr/bin/g++   -g -o CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o -c /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp",
   "file": "/home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.cpp",
   "output": "CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o"
+},
+{
+  "directory": "/home/leytonm/Dev/C/OBJViewerProject/build",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o -c /home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.cpp",
+  "file": "/home/leytonm/Dev/C/OBJViewerProject/src/gl_utils.cpp",
+  "output": "CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o"
 }
 ]

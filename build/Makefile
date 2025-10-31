@@ -153,6 +153,30 @@ src/ObjParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.s
 .PHONY : src/ObjParser.cpp.s
 
+src/gl_utils.o: src/gl_utils.cpp.o
+.PHONY : src/gl_utils.o
+
+# target to build an object file
+src/gl_utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.o
+.PHONY : src/gl_utils.cpp.o
+
+src/gl_utils.i: src/gl_utils.cpp.i
+.PHONY : src/gl_utils.i
+
+# target to preprocess a source file
+src/gl_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.i
+.PHONY : src/gl_utils.cpp.i
+
+src/gl_utils.s: src/gl_utils.cpp.s
+.PHONY : src/gl_utils.s
+
+# target to generate assembly for a file
+src/gl_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/obj_viewer.dir/build.make CMakeFiles/obj_viewer.dir/src/gl_utils.cpp.s
+.PHONY : src/gl_utils.cpp.s
+
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
 
@@ -213,6 +237,9 @@ help:
 	@echo "... src/ObjParser.o"
 	@echo "... src/ObjParser.i"
 	@echo "... src/ObjParser.s"
+	@echo "... src/gl_utils.o"
+	@echo "... src/gl_utils.i"
+	@echo "... src/gl_utils.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
