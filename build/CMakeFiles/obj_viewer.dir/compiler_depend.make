@@ -11,6 +11,7 @@ CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o: /home/leytonm/Dev/C/OBJViewerProj
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
   /usr/include/assert.h \
+  /usr/include/c++/13/algorithm \
   /usr/include/c++/13/array \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
@@ -121,6 +122,8 @@ CMakeFiles/obj_viewer.dir/src/ObjParser.cpp.o: /home/leytonm/Dev/C/OBJViewerProj
   /usr/include/c++/13/limits \
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
+  /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stdexcept \
@@ -933,8 +936,6 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/local/include/glm/ext/vector_relational.hpp:
 
-/usr/local/include/glm/ext/vector_int1_sized.hpp:
-
 /usr/local/include/glm/ext/vector_int1.hpp:
 
 /usr/local/include/glm/ext/vector_float1_precision.hpp:
@@ -1036,8 +1037,6 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 /usr/local/include/glm/ext/vector_float4_precision.hpp:
 
 /usr/local/include/glm/ext/vector_float4.hpp:
-
-/usr/local/include/glm/ext/vector_float3_precision.hpp:
 
 /usr/local/include/glm/ext/vector_float3.hpp:
 
@@ -1203,6 +1202,24 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/local/include/glm/ext/matrix_float4x3_precision.hpp:
+
+/usr/local/include/glm/detail/type_vec3.inl:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/c++/13/pstl/glue_algorithm_defs.h:
+
+/usr/local/include/glm/ext/vector_int1_sized.hpp:
+
+/usr/include/c++/13/pstl/execution_defs.h:
+
+/usr/include/c++/13/bits/basic_ios.tcc:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
+
 /usr/include/c++/13/istream:
 
 /usr/local/include/glm/ext/vector_uint4.hpp:
@@ -1305,12 +1322,6 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/c++/13/bits/stl_uninitialized.h:
 
-/usr/local/include/glm/gtc/epsilon.inl:
-
-/usr/include/c++/13/system_error:
-
-/usr/include/c++/13/compare:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h:
 
 /usr/include/asm-generic/errno.h:
@@ -1369,10 +1380,6 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/c++/13/cwctype:
 
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-/usr/include/c++/13/bits/string_view.tcc:
-
 /usr/include/c++/13/bits/locale_facets.tcc:
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
@@ -1383,21 +1390,7 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/c++/13/bits/erase_if.h:
 
-/usr/include/c++/13/bits/basic_ios.tcc:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
-
 /usr/include/c++/13/bits/move.h:
-
-/usr/include/c++/13/bits/concept_check.h:
-
-/usr/include/c++/13/bits/alloc_traits.h:
-
-/usr/include/c++/13/bits/ptr_traits.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
 
 /usr/include/c++/13/bits/streambuf.tcc:
 
@@ -1421,6 +1414,10 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/c++/13/backward/binders.h:
 
+/usr/include/c++/13/bits/alloc_traits.h:
+
+/usr/include/c++/13/bits/concept_check.h:
+
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/include/c++/13/bits/algorithmfwd.h:
@@ -1431,27 +1428,55 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
-/usr/include/c++/13/clocale:
-
 /usr/include/c++/13/bit:
 
 /usr/include/c++/13/bits/basic_string.tcc:
 
-/usr/local/include/glm/ext/matrix_double3x3_precision.hpp:
-
-/usr/include/alloca.h:
+/usr/include/c++/13/clocale:
 
 /usr/include/c++/13/cassert:
 
 /usr/include/c++/13/bits/cpp_type_traits.h:
 
-/usr/include/c++/13/string:
-
-/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
-
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
+/usr/local/include/glm/ext/matrix_double3x3_precision.hpp:
+
+/usr/include/alloca.h:
+
+/usr/include/c++/13/bits/refwrap.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/include/c++/13/bits/fstream.tcc:
+
+/usr/include/c++/13/bits/ptr_traits.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
+
+/usr/local/include/glm/ext/vector_float3_precision.hpp:
+
+/usr/include/c++/13/algorithm:
+
 /home/leytonm/Dev/C/OBJViewerProject/src/ObjParser.hpp:
+
+/usr/include/c++/13/array:
+
+/usr/include/c++/13/bits/hash_bytes.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
+/usr/local/include/glm/gtc/quaternion.inl:
+
+/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/x86_64-linux-gnu/sys/select.h:
+
+/usr/include/c++/13/cwchar:
 
 /usr/include/c++/13/iosfwd:
 
@@ -1493,20 +1518,6 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/errno.h:
 
-/usr/include/features-time64.h:
-
-/usr/include/c++/13/array:
-
-/usr/local/include/glm/gtc/quaternion.inl:
-
-/usr/include/c++/13/bits/stl_iterator_base_funcs.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/c++/13/bits/hash_bytes.h:
-
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
-
 /usr/include/c++/13/bits/ostream_insert.h:
 
 /usr/include/c++/13/bits/ios_base.h:
@@ -1541,11 +1552,21 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/c++/13/stdexcept:
 
-/usr/include/c++/13/bits/fstream.tcc:
+/usr/local/include/glm/gtc/epsilon.inl:
 
-/usr/include/c++/13/bits/refwrap.h:
+/usr/include/c++/13/compare:
 
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+/usr/include/c++/13/system_error:
+
+/usr/include/c++/13/bits/string_view.tcc:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
+
+/usr/include/c++/13/string:
+
+/usr/include/features-time64.h:
 
 /usr/include/c++/13/tr1/ell_integral.tcc:
 
@@ -1564,8 +1585,6 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 /usr/include/c++/13/tr1/hypergeometric.tcc:
 
 /usr/include/c++/13/type_traits:
-
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
 
 /usr/include/c++/13/tr1/legendre_function.tcc:
 
@@ -1657,9 +1676,9 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
-/usr/include/c++/13/bits/requires_hosted.h:
-
 /usr/include/GL/gl.h:
+
+/usr/include/c++/13/bits/requires_hosted.h:
 
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
@@ -1708,10 +1727,6 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
-
-/usr/include/c++/13/cwchar:
-
-/usr/include/x86_64-linux-gnu/sys/select.h:
 
 /usr/local/include/glm/ext/vector_uint1_sized.hpp:
 
@@ -1820,9 +1835,3 @@ CMakeFiles/obj_viewer.dir/src/main.cpp.o: /home/leytonm/Dev/C/OBJViewerProject/s
 /usr/include/c++/13/bits/node_handle.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
-
-/usr/local/include/glm/ext/matrix_float4x3_precision.hpp:
-
-/usr/local/include/glm/detail/type_vec3.inl:
-
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:

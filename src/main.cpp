@@ -20,7 +20,7 @@ void pollInput(GLFWwindow* window);
 int main () {
 
     ObjParser parser;
-    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/teapot.obj");
+    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/pumpkin.obj");
     parser.normalize();
     std::vector<GLfloat> vertbuf = parser.flatten();
 
@@ -121,8 +121,8 @@ int main () {
 void pollInput(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position.y -= 0.05f;
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.y += 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) angleX += 2.0f;
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) angleX -= 2.0f;
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position.x += 0.05f;
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) position.x -= 0.05f;
 
     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) angleY -= 2.0f;
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) angleY += 2.0f;

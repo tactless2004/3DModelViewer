@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 #include <glm/glm.hpp>
 #include "ObjParser.hpp"
 
@@ -55,13 +56,17 @@ float v_mag_f(const Vertex& vertex) {
 }
 
 void ObjParser::normalize() {
+    float max_dim = 0.0f;
     for (auto& vertex : vertdat) {
-        //std::cout << "normalizing " << vertex.x << " " << vertex.y << " " << vertex.z << "!" << std::endl;
-        float inv_mag = 1.0f / v_mag_f(vertex);
-        vertex.x *= inv_mag;
-        vertex.y *= inv_mag;
-        vertex.z *= inv_mag;
-        //std::cout << "normalized " << vertex.x << " " << vertex.y << " " << vertex.z << "!" << std::endl;
+        max_dim = std::max({max_dim, vertex.x, vertex.y, vertex.z});
+    }
+
+    float inv_max_dim = 1.0f / max_dim ? max_dim != 0 : 1.0f;
+
+    for (auto& vertex : vertdat) {
+        vertex.x *= inv_max_dim;
+        vertex.y *= inv_max_dim;
+        vertex.z *= inv_max_dim;
     }
 }
 
