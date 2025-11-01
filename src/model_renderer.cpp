@@ -117,5 +117,4 @@ void ModelRenderer::render() const {
     );
     glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 3);
     glDisableVertexAttribArray(0);
-
 }

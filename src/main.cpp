@@ -26,9 +26,9 @@ glm::vec3 cameraPos = glm::vec3(0, 0, 5);
 // Define functions, even though modern c++ should be able to look ahead compile
 void pollInput(GLFWwindow* window);
 
-int main () {
+int main (int argc, char* argv[]) {
     ObjParser parser;
-    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/teapot.obj");
+    parser.parseFile(argv[1]);
     parser.normalize();
     std::vector<GLfloat> vertbuf = parser.flatten();
 
