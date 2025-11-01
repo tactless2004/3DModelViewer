@@ -28,7 +28,7 @@ void pollInput(GLFWwindow* window);
 
 int main () {
     ObjParser parser;
-    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/pumpkin.obj");
+    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/teapot.obj");
     parser.normalize();
     std::vector<GLfloat> vertbuf = parser.flatten();
 

@@ -45,12 +45,12 @@ void ModelRenderer::rotate_model(GLfloat radians, glm::vec3 axis) {
     // rotate with respect to the origin
     glm::mat4 init_pos = glm::translate(
         glm::mat4(1.0f),
-        glm::vec3(model[0].x, model[1].y, model[2].z)
+        glm::vec3(model[3])
     );
 
     glm::mat4 inv_init_pos = glm::translate(
         glm::mat4(1.0f),
-        glm::vec3(-model[0].x, -model[1].y, -model[2].z)
+        glm::vec3(-model[3])
     );
 
     // Translate model to the origin
