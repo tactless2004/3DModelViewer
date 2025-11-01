@@ -6,6 +6,8 @@ class ModelRenderer {
 public:
     // OpenGL internal stuff
     GLuint renderingProgram;
+    GLuint vertexVBO;
+    GLuint VAO;
     
     // Matrices
     glm::mat4 model;
@@ -16,12 +18,12 @@ public:
     glm::vec3 pos;
 
     // Collections
-    std::vector<GLfloat>& vertices;
+    std::vector<GLfloat> vertices;
 
     // Constructor
-    ModelRenderer(GLuint programID, std::vector<GLfloat>& verts, glm::vec3 position);
+    ModelRenderer(const GLuint programID, const std::vector<GLfloat> verts, const glm::vec3 position);
 
-    // Member methods
+    // Transform Methods
     void reset_model();
     void translate_model(const GLfloat x, const GLfloat y, const GLfloat z);
     void translate_model(const glm::vec3 transvec);
@@ -29,6 +31,10 @@ public:
     void rotate_model(const GLfloat radians, const glm::vec3 axis);
 
     void scale_model(const GLfloat sf);
+
+    // Render Methods
+    void bufferVertData();
+    void render() const;
 
     glm::mat4 get_mvp() const;
 };

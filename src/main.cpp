@@ -28,7 +28,7 @@ void pollInput(GLFWwindow* window);
 
 int main () {
     ObjParser parser;
-    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/teapot.obj");
+    parser.parseFile("/home/leytonm/Dev/C/OBJViewerProject/test_obj_files/pumpkin.obj");
     parser.normalize();
     std::vector<GLfloat> vertbuf = parser.flatten();
 
@@ -52,66 +52,31 @@ int main () {
         "/home/leytonm/Dev/C/OBJViewerProject/shaders/vertshader.glsl",
         "/home/leytonm/Dev/C/OBJViewerProject/shaders/fragshader.glsl"
     );
-	
+
 	ModelRenderer model1 = ModelRenderer(programID, vertbuf, glm::vec3(0.0f, 0.0f, 0.0f));
-
-	// Setup: VBOs and VAOs
-    GLuint vao, vbo;
-    // Generate vao
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    // Generate vbo
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-    // Load data into vbo
-    glBufferData(
-        GL_ARRAY_BUFFER,
-        model1.vertices.size() * sizeof(GLfloat),
-        model1.vertices.data(),
-        GL_STATIC_DRAW
-    );
-
+    // vertices never change, so just bufferData now
+    std::cout << vertbuf.size() << std::endl;
+    model1.bufferVertData();
     glEnable(GL_DEPTH_TEST);  
-
-	// Get MVP location
-	GLint mvpLoc = glGetUniformLocation(programID, "mvp");
 
     while(!glfwWindowShouldClose(window)) {
         glfwPollEvents();
 		// poll events to move 3D objects
         pollInput(window);
 
+        glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
 		// actuate inputs
 		model1.reset_model();
 		model1.translate_model(position);
 		model1.rotate_model(angleX, glm::vec3(1, 0, 0));
 		model1.rotate_model(angleY, glm::vec3(0, 1, 0));
-		model1.translate_model(position);
 		model1.scale_model(zoom);
 		
-		// use model renderingProgram
-		glUseProgram(model1.renderingProgram);
-
-		glUniformMatrix4fv(mvpLoc, 1, GL_FALSE, glm::value_ptr(model1.get_mvp()));
-
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        // Draw the OBJ file :)
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glVertexAttribPointer(
-            0,
-            3,
-            GL_FLOAT,
-            GL_FALSE,
-            0,
-            (void*)0
-        );
-        glDrawArrays(GL_TRIANGLES, 0, model1.vertices.size() / 3);
-        glDisableVertexAttribArray(0);
-
+        // render model
+        model1.render();
+        
+        // Swap the front and back buffers
         glfwSwapBuffers(window);
     }
 
