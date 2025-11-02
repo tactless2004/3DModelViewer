@@ -14,6 +14,7 @@
 #include "ObjParser.hpp"
 #include "gl_utils.hpp"
 #include "model_renderer.hpp"
+#include "grid_lines.hpp"
 
 float angleX = 0.0f;
 float angleY = 0.0f;
@@ -54,11 +55,14 @@ int main (int argc, char* argv[]) {
     );
 
 	ModelRenderer model1 = ModelRenderer(programID, vertbuf, glm::vec3(0.0f, 0.0f, 0.0f));
+    GridLines grid_lines = GridLines();
+
     // vertices never change, so just bufferData now
     std::cout << vertbuf.size() << std::endl;
     model1.bufferVertData();
     glEnable(GL_DEPTH_TEST);  
 
+    glClearColor(1.0, 0.5, 0.0f, 1.0f);
     while(!glfwWindowShouldClose(window)) {
         glfwPollEvents();
 		// poll events to move 3D objects
@@ -75,6 +79,9 @@ int main (int argc, char* argv[]) {
 		
         // render model
         model1.render();
+
+        // render gridlines
+        grid_lines.render();
         
         // Swap the front and back buffers
         glfwSwapBuffers(window);

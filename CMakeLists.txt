@@ -14,6 +14,8 @@ add_executable(obj_viewer
     src/gl_utils.cpp
     src/model_renderer.hpp
     src/model_renderer.cpp
+    src/grid_lines.hpp
+    src/grid_lines.cpp
 )
 
 target_link_libraries(obj_viewer
