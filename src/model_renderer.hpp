@@ -36,5 +36,8 @@ public:
     void bufferVertData();
     void render() const;
 
+    // setters
+    void setView(glm::mat4 v);
+
     glm::mat4 get_mvp() const;
 };

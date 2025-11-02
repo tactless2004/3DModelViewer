@@ -15,6 +15,7 @@
 #include "gl_utils.hpp"
 #include "model_renderer.hpp"
 #include "grid_lines.hpp"
+#include "camera.hpp"
 
 float angleX = 0.0f;
 float angleY = 0.0f;
@@ -54,6 +55,7 @@ int main (int argc, char* argv[]) {
         "/home/leytonm/Dev/C/OBJViewerProject/shaders/fragshader.glsl"
     );
 
+    Camera camera = Camera(glm::vec3(0.0f, 0.0f, 5.0f));
 	ModelRenderer model1 = ModelRenderer(programID, vertbuf, glm::vec3(0.0f, 0.0f, 0.0f));
     GridLines grid_lines = GridLines();
 
@@ -67,6 +69,8 @@ int main (int argc, char* argv[]) {
         glfwPollEvents();
 		// poll events to move 3D objects
         pollInput(window);
+        camera.pollInput(window);
+        model1.setView(camera.getView());
 
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
@@ -93,10 +97,10 @@ int main (int argc, char* argv[]) {
 
 void pollInput(GLFWwindow* window) {
 	// TODO: research how other tools do this, not happy with the current state of the movements
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position.y += 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.y -= 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position.x -= 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) position.x += 0.05f;
+    //if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position.y += 0.05f;
+    //if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.y -= 0.05f;
+    //if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position.x -= 0.05f;
+    //if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) position.x += 0.05f;
 
     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) angleX -= 2.0f;
     if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) angleX += 2.0f;

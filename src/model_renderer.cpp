@@ -18,13 +18,6 @@ ModelRenderer::ModelRenderer(GLuint programID, std::vector<GLfloat> verts, glm::
     // Generate vbo
     glGenBuffers(1, &vertexVBO);
 
-    // TODO: handle view matrix in a Camera Class
-	view = glm::lookAt(
-		glm::vec3(0, 0, 5), // camera vec
-		glm::vec3(0, 0, 0), // center vec
-		glm::vec3(0, 1, 0) // up vec
-	);
-
     projection = glm::perspective(
 		glm::radians(45.0f), 
 		640.0f / 480.0f, // aspect ratio
@@ -71,10 +64,15 @@ void ModelRenderer::scale_model(GLfloat sf) {
 void ModelRenderer::reset_model() {
     model = glm::mat4(1.0f);
 }
+
 glm::mat4 ModelRenderer::get_mvp() const {
     glm::mat4 mvp;
     mvp = projection * view * model;
     return mvp;
+}
+
+void ModelRenderer::setView(glm::mat4 v) {
+    view = v;
 }
 
 void ModelRenderer::bufferVertData() {
