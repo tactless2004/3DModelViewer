@@ -38,6 +38,7 @@ public:
 
     // setters
     void setView(glm::mat4 v);
+    void setProjection(glm::mat4 p);
 
     glm::mat4 get_mvp() const;
 };

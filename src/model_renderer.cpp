@@ -75,6 +75,10 @@ void ModelRenderer::setView(glm::mat4 v) {
     view = v;
 }
 
+void ModelRenderer::setProjection(glm::mat4 p) {
+    projection = p;
+}
+
 void ModelRenderer::bufferVertData() {
     glBindBuffer(GL_ARRAY_BUFFER, vertexVBO);
     glBufferData(
