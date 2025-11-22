@@ -103,6 +103,8 @@ int main (int argc, char* argv[]) {
         model1.render();
 
         // render gridlines
+        grid_lines.setModel(glm::mat4(1.0f));
+        grid_lines.setView(camera.getView());
         grid_lines.render();
         
         // Swap the front and back buffers

@@ -106,7 +106,6 @@ void ModelRenderer::render() const {
     
     // Draw the OBJ
     glBindVertexArray(VAO);
-    // std::cout << "VAO: " << VAO << std::endl;
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexVBO);
     glVertexAttribPointer(
@@ -119,4 +118,7 @@ void ModelRenderer::render() const {
     );
     glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 3);
     glDisableVertexAttribArray(0);
+
+    // Explicitly unbind VAO
+    glBindVertexArray(0);
 }
