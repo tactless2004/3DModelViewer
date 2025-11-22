@@ -22,8 +22,12 @@ GridLines::GridLines() {
     glGenBuffers(1, &vertexVBO);
     createGridlines();
 
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    glEnableVertexAttribArray(0);
+
     // Explicitly unbind vao
     glBindVertexArray(0);
+
 
     projection = glm::perspective(
 		glm::radians(45.0f), 
@@ -34,13 +38,15 @@ GridLines::GridLines() {
 }
 
 void GridLines::createGridlines() {
-    float MINW, MINH = -1.0f;
-    float MAXW, MAXH = 1.0f;
+    float MINW = -10.0f;
+    float MINH = -10.0f;
+    float MAXW = 10.0f;
+    float MAXH = 10.0f;
     float interval = 0.1f;
 
     // horizontal lines
-    float currentHeight = -1.0f;
-    while(currentHeight <= 1.0f) {
+    float currentHeight = MINH;
+    while(currentHeight <= MAXH) {
         vertices.push_back(glm::vec3(MINW, 0.0f, currentHeight));
         vertices.push_back(glm::vec3(MAXW, 0.0f, currentHeight));
 
@@ -48,8 +54,8 @@ void GridLines::createGridlines() {
     }
 
     // vertical lines
-    float currentWidth = -1.0f;
-    while(currentWidth <= 1.0f) {
+    float currentWidth = MINW;
+    while(currentWidth <= MAXW) {
         vertices.push_back(glm::vec3(currentWidth, 0.0f, MINH));
         vertices.push_back(glm::vec3(currentWidth, 0.0f, MAXH));
 
@@ -83,7 +89,6 @@ void GridLines::render() const {
     );
 
     glBindVertexArray(VAO);
-    glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexVBO);
 
     glVertexAttribPointer(
@@ -95,6 +100,4 @@ void GridLines::render() const {
         (void*) 0 // ptr to the first value, skip none, so 0
     );
     glDrawArrays(GL_LINE_LOOP, 0, vertices.size());
-    glDisableVertexAttribArray(0);
-    glBindVertexArray(0);
 }

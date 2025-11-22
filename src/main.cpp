@@ -28,16 +28,18 @@ glm::vec3 cameraPos = glm::vec3(0, 0, 5);
 void glfw_windowsize_change_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
 
-    ModelRenderer* renderer = static_cast<ModelRenderer*>(glfwGetWindowUserPointer(window));
-
-    renderer->setProjection(
-        glm::perspective(
-            glm::radians(45.0f),
-            static_cast<float>(width) / height,
-            0.1f,
-            100.0f
-        )
+    glm::mat4 newProjectionMat = glm::perspective(
+        glm::radians(45.0f),
+        static_cast<float>(width) / height,
+        0.1f,
+        100.0f
     );
+
+    ModelRenderer* renderer = static_cast<ModelRenderer*>(glfwGetWindowUserPointer(window));
+    GridLines* grid_lines = static_cast<GridLines*>(glfwGetWindowUserPointer(window));
+
+    renderer->setProjection(newProjectionMat);
+    grid_lines->setProjection(newProjectionMat);
 }
 
 int main (int argc, char* argv[]) {
@@ -72,11 +74,12 @@ int main (int argc, char* argv[]) {
 
     Camera camera = Camera(glm::vec3(0.0f, 0.0f, 5.0f));
 	ModelRenderer model1 = ModelRenderer(programID, vertbuf, glm::vec3(0.0f, 0.0f, 0.0f));
-    
-    // Add window pointer, so glfw callbacks can see the model.
-    glfwSetWindowUserPointer(window, &model1);
 
     GridLines grid_lines = GridLines();
+    // Add window pointer, so glfw callbacks can see the model and gridlines.
+    // this is just to update the projection matrix.
+    glfwSetWindowUserPointer(window, &model1);
+    glfwSetWindowUserPointer(window, &grid_lines);
 
     // vertices never change, so just bufferData now
     model1.bufferVertData();
