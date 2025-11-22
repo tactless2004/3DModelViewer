@@ -14,6 +14,8 @@
 #include "ObjParser.hpp"
 #include "gl_utils.hpp"
 #include "model_renderer.hpp"
+#include "grid_lines.hpp"
+#include "camera.hpp"
 
 float angleX = 0.0f;
 float angleY = 0.0f;
@@ -23,8 +25,22 @@ float zoom = 1.0f;
 glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
 glm::vec3 cameraPos = glm::vec3(0, 0, 5);
 
-// Define functions, even though modern c++ should be able to look ahead compile
-void pollInput(GLFWwindow* window);
+void glfw_windowsize_change_callback(GLFWwindow* window, int width, int height) {
+    glViewport(0, 0, width, height);
+
+    glm::mat4 newProjectionMat = glm::perspective(
+        glm::radians(45.0f),
+        static_cast<float>(width) / height,
+        0.1f,
+        100.0f
+    );
+
+    ModelRenderer* renderer = static_cast<ModelRenderer*>(glfwGetWindowUserPointer(window));
+    GridLines* grid_lines = static_cast<GridLines*>(glfwGetWindowUserPointer(window));
+
+    renderer->setProjection(newProjectionMat);
+    grid_lines->setProjection(newProjectionMat);
+}
 
 int main (int argc, char* argv[]) {
     ObjParser parser;
@@ -39,7 +55,10 @@ int main (int argc, char* argv[]) {
     }
 
     window = glfwCreateWindow(640, 480, "OBJ Viewer", NULL, NULL);
+ 
     glfwMakeContextCurrent(window);
+    // Attach resize callback
+    glfwSetFramebufferSizeCallback(window, glfw_windowsize_change_callback);
 
     if(!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         std::cout << "Couldn't find opengl" << std::endl;
@@ -53,16 +72,26 @@ int main (int argc, char* argv[]) {
         "/home/leytonm/Dev/C/OBJViewerProject/shaders/fragshader.glsl"
     );
 
+    Camera camera = Camera(glm::vec3(0.0f, 0.0f, 5.0f));
 	ModelRenderer model1 = ModelRenderer(programID, vertbuf, glm::vec3(0.0f, 0.0f, 0.0f));
+
+    GridLines grid_lines = GridLines();
+    // Add window pointer, so glfw callbacks can see the model and gridlines.
+    // this is just to update the projection matrix.
+    glfwSetWindowUserPointer(window, &model1);
+    glfwSetWindowUserPointer(window, &grid_lines);
+
     // vertices never change, so just bufferData now
-    std::cout << vertbuf.size() << std::endl;
     model1.bufferVertData();
     glEnable(GL_DEPTH_TEST);  
 
+    // Cornflower Blue
+    glClearColor(0.392, 0.584, 0.929f, 1.0f);
+
     while(!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-		// poll events to move 3D objects
-        pollInput(window);
+        camera.pollInput(window);
+        model1.setView(camera.getView());
 
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
@@ -75,6 +104,11 @@ int main (int argc, char* argv[]) {
 		
         // render model
         model1.render();
+
+        // render gridlines
+        grid_lines.setModel(glm::mat4(1.0f));
+        grid_lines.setView(camera.getView());
+        grid_lines.render();
         
         // Swap the front and back buffers
         glfwSwapBuffers(window);
@@ -82,18 +116,4 @@ int main (int argc, char* argv[]) {
 
     glfwTerminate();
     return 0;
-}
-
-void pollInput(GLFWwindow* window) {
-	// TODO: research how other tools do this, not happy with the current state of the movements
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position.y += 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position.y -= 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position.x -= 0.05f;
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) position.x += 0.05f;
-
-    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) angleX -= 2.0f;
-    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) angleX += 2.0f;
-
-    if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) zoom *= 1.05f;
-    if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) zoom /= 1.05f;
 }
